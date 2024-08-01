@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Todo
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 class IndexView(generic.ListView):
     template_name = 'todos/index.html'
@@ -33,3 +33,9 @@ def update(request, todo_id):
 
     todo.save()
     return redirect('todos:index')
+
+def update_priority(request, todo_id, priority):
+    todo = get_object_or_404(Todo, pk=todo_id)
+    todo.priority = priority
+    todo.save()
+    return HttpResponse(True)

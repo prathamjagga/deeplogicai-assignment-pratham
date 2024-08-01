@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('<int:todo_id>/delete', views.delete, name='delete'),
     path('<int:todo_id>/update', views.update, name='update'),
-    path('add/', views.add, name='add')
+    path('add/', views.add, name='add'),
+    path('update_priority/<int:todo_id>/<int:priority>/', views.update_priority, name='update_priority')
 ]
